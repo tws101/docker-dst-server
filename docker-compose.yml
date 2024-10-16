@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   dst-server:
-     image: jamesits/dst-server:latest
+     image: tws101/docker-dst-server:latest
      restart: "on-failure:5"
      ports:
         - "10999-11000:10999-11000/udp"
