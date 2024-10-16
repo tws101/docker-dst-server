@@ -7,5 +7,5 @@ services:
         - "10999-11000:10999-11000/udp"
         - "12346-12347:12346-12347/udp"
      volumes:
-        - ~/.klei/DoNotStarveTogether:/data
+        - ${PATH_ON_HOST}:/data
      stop_grace_period: 6m
