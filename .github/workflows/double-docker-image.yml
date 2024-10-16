@@ -1,0 +1,33 @@
+name: Build Double Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag1:
+        description: 'Tag for Docker Image'
+        required: true
+        default: 'setthistag'
+      tag2:
+        description: 'Tag for Docker Image'
+        required: true
+        default: 'setthistag'
+
+jobs:
+  push_to_registry:
+    name: push docker image to hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: check repository
+        uses: actions/checkout@v4
+
+      - name: login to docker registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+
+      - name: build and push docker image to registry
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: tws101/docker-dst-server:${{ github.event.inputs.tag1 }},tws101/docker-dst-server:${{ github.event.inputs.tag2 }}
