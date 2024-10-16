@@ -1,6 +1,6 @@
 # Don't Starve Together Dedicated Server Docker Image
 
-They write their server setup instructions like sh*t, so we made this Docker image to simplify things.
+Forked from Jamesits
 
 Please read the whole document before putting your hands on your server. 
 
@@ -8,13 +8,7 @@ Please read the whole document before putting your hands on your server.
 
 ## Versioning
 
-The DST server code changes a lot. We offer multiple variants (tags) on [Docker Hub](https://hub.docker.com/r/jamesits/dst-server/):
-
-* `latest` or `vanilla` are less frequently updated images, recommended for day-to-day use
-* `nightly` is a nightly built image, so it (hopefully) comes with the latest server code
-* `steamcmd-rebase` works the same way as `latest` but is based on [`cm2network/steamcmd:root`](https://hub.docker.com/r/cm2network/steamcmd)
-
-All variants except `nightly` also have a `-slim` tagged version which does not come with DST server pre-installed; required files will be downloaded every time the container is launched. The `-slim` versions cannot be launched offline.
+Please run the latest tag or any tage that does not say dev
 
 ## Running
 
@@ -37,7 +31,7 @@ Start server:
 docker run -v ${HOME}/.klei/DoNotStarveTogether:/data -p 10999-11000:10999-11000/udp -p 12346-12347:12346-12347/udp -e "DST_SERVER_ARCH=amd64" -it jamesits/dst-server:latest
 ```
 
-If you use `docker-compose`, an [example config](https://github.com/Jamesits/docker-dst-server/blob/master/docker-compose.yml) is provided.
+If you use `docker-compose`, an [example config](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml) is provided.
 
 ### Stop server
 
@@ -69,25 +63,6 @@ The token looks like `pds-g^aaaaaaaaa-q^jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 If you need to add mods, change world generation config, etc., please do it now. Don't forget to edit `your_data_directory/DoNotStarveTogether/Cluster_1/cluster.ini` and get your server an unique name!
 
 After you finish this, re-run start server command, and the server should be running.
-
-## Build Docker image locally
-
-(In most cases you don't need this; just pull the prebuilt image from Docker Hub.)
-
-```shell
-git clone https://github.com/Jamesits/docker-dst-server.git docker-dst-server
-cd docker-dst-server
-docker build . -t dst-server:latest
-```
-
-There are some arguments you can set via `--build-arg`:
-
-* `BASE_IMAGE`: the `FROM` image (recent Debian or Ubuntu based images are supported)
-* `STEAMCMD_PATH`: where is `steamcmd.sh` in the base image
-* `DST_DOWNLOAD`: set to `1` to embed DST server into the image
-* `DST_USER`: the user to run server as (inside container)
-* `DST_GROUP`: the group to run server as (inside container)
-
 
 ## Known Issues
 
@@ -157,13 +132,10 @@ The server will create a cave for you. If you don't want the cave, you have to m
 
 Open `Cluster_X/Master/modoverrides.lua` and you will see something like `workshop-XXXXX` where `XXXXX` is a number.\
 Open `Cluster_1/mods/dedicated_server_mods_setup.lua` on server and write `ServerModSetup("XXXXX")`.
-
-## Maintainer
-
- * [James Swineson](https://swineson.me)
  
 ## Thanks
 
+ * [James Swineson](https://swineson.me)
  * [Mingye Wang](https://github.com/Arthur2e5)
  * [@MephistoMMM](https://github.com/MephistoMMM)
  * [@m13253](https://github.com/m13253)
