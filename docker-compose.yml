@@ -4,6 +4,8 @@ services:
      container_name: dst-server
      image: tws101/docker-dst-server:latest
      restart: "on-failure:5"
+     networks:
+      - dst
      ports:
         - "10999-11000:10999-11000/udp"
         - "12346-12347:12346-12347/udp"
