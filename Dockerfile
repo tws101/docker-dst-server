@@ -15,8 +15,9 @@ ARG DST_USER_DATA_PATH=/data
 # install packages
 RUN dpkg --add-architecture i386 \
     && apt-get update -y \
-    && apt-get install -y locales -y \
-    && locale-gen en_US.UTF-8 \
+    && apt-get install -y locales \
+    && sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
+    && locale-gen \
     && apt-get install -y --no-install-recommends ca-certificates lib32stdc++6 libcurl3-gnutls:i386 libcurl3-gnutls wget tar supervisor \
     && (apt-get install -y --no-install-recommends lib32gcc-s1 || apt-get install -y --no-install-recommends lib32gcc1) \
     && apt-get autoremove -y \
