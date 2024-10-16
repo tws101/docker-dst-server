@@ -159,13 +159,10 @@ The server will create a cave for you. If you don't want the cave, you have to m
 
 Open `Cluster_X/Master/modoverrides.lua` and you will see something like `workshop-XXXXX` where `XXXXX` is a number.\
 Open `Cluster_1/mods/dedicated_server_mods_setup.lua` on server and write `ServerModSetup("XXXXX")`.
-
-## Maintainer
-
- * [James Swineson](https://swineson.me)
  
 ## Thanks
 
+ * [James Swineson](https://swineson.me)
  * [Mingye Wang](https://github.com/Arthur2e5)
  * [@MephistoMMM](https://github.com/MephistoMMM)
  * [@m13253](https://github.com/m13253)
