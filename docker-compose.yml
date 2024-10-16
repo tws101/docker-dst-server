@@ -1,4 +1,6 @@
-version: '3.5'
+networks:
+  dst:
+    name: dst
 services:
   dst-server:
      container_name: dst-server
