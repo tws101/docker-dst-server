@@ -64,7 +64,7 @@ ENV DST_GROUP=$DST_GROUP
 ENV DST_USER_DATA_PATH=$DST_USER_DATA_PATH
 VOLUME [ "${DST_USER_DATA_PATH}" ]
 
-EXPOSE 10999-11000/udp 12346-12347/udp
+EXPOSE 11001-11004/udp 12546-12549/udp
 ENTRYPOINT [ "entrypoint.sh" ]
 CMD ["supervisord", "-c", "/etc/supervisor/supervisor.conf", "-n"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD [ "healthcheck.sh" ]
