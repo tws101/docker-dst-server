@@ -9,8 +9,8 @@ services:
      networks:
       - dst
      ports:
-        - "10999-11000:10999-11000/udp"
-        - "12346-12347:12346-12347/udp"
+        - "11001-11004:11001-11004/udp"
+        - "12546-12549:12546-12549/udp"
      volumes:
         - ${PATH_ON_HOST}:/data
      stop_grace_period: 6m
