@@ -2,8 +2,8 @@
 set -Eeuo pipefail
 
 DIR_MODS_SYS="/opt/dst_server/mods"
-DIR_MODS_USER="${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_1/mods"
-FILE_CLUSTER_TOKEN="${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_1/cluster_token.txt"
+DIR_MODS_USER="${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_IA/mods"
+FILE_CLUSTER_TOKEN="${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_IA/cluster_token.txt"
 
 # set -e error handler.
 on_error() {
@@ -18,7 +18,7 @@ if [ "$1" == "dontstarve_dedicated_server_nullrenderer" ] || [ "$1" == "supervis
         echo "Creating default server config..."
 	mkdir -p "${DST_USER_DATA_PATH}"
         cp -r /opt/dst_default_config/* "${DST_USER_DATA_PATH}"
-        touch "${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_1/cluster_token.txt"
+        touch "${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_IA/cluster_token.txt"
     fi
 
     # fill cluster token from environment variable
@@ -29,7 +29,7 @@ if [ "$1" == "dontstarve_dedicated_server_nullrenderer" ] || [ "$1" == "supervis
 
     # check cluster token file format
     if [ ! -f "${FILE_CLUSTER_TOKEN}" ]; then
-        >&2 echo "Please fill in \`DoNotStarveTogether/Cluster_1/cluster_token.txt\` with your cluster token and restart server!"
+        >&2 echo "Please fill in \`DoNotStarveTogether/Cluster_IA/cluster_token.txt\` with your cluster token and restart server!"
         exit
     else
         if [ -z "$(tail -c 1 "${FILE_CLUSTER_TOKEN}")" ]; then
@@ -47,7 +47,7 @@ if [ "$1" == "dontstarve_dedicated_server_nullrenderer" ] || [ "$1" == "supervis
     # if the mods dir is already a symlink, then we temporary remove it to protect it, so that it survives a container restart
     if [[ -L "${DIR_MODS_SYS}" ]]; then
     	rm -f "${DIR_MODS_SYS}"
-	cp -r /opt/dst_default_config/DoNotStarveTogether/Cluster_1/mods "${DIR_MODS_SYS}"
+	cp -r /opt/dst_default_config/DoNotStarveTogether/Cluster_IA/mods "${DIR_MODS_SYS}"
     fi
 
     # Update game
@@ -58,7 +58,7 @@ if [ "$1" == "dontstarve_dedicated_server_nullrenderer" ] || [ "$1" == "supervis
     # if there are no mods config, use the one that comes with the server
     if [ ! -d "${DIR_MODS_USER}" ]; then
         echo "Creating default mod config..."
-        mkdir -p "${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_1"
+        mkdir -p "${DST_USER_DATA_PATH}/DoNotStarveTogether/Cluster_IA"
         cp -r "${DIR_MODS_SYS}" "${DIR_MODS_USER}"
     fi
 
@@ -70,7 +70,7 @@ if [ "$1" == "dontstarve_dedicated_server_nullrenderer" ] || [ "$1" == "supervis
     # Note: cluster-agnostic downloading is somehow broken
     # https://forums.kleientertainment.com/forums/topic/128188-what-is-ugc/?do=findComment&comment=1440420
     echo "Updating mods..."
-    su --preserve-environment --group "${DST_GROUP}" -c "dontstarve_dedicated_server_nullrenderer -persistent_storage_root \"${DST_USER_DATA_PATH}\" -ugc_directory \"${DST_USER_DATA_PATH}\"/ugc -cluster Cluster_1 -only_update_server_mods" "${DST_USER}"
+    su --preserve-environment --group "${DST_GROUP}" -c "dontstarve_dedicated_server_nullrenderer -persistent_storage_root \"${DST_USER_DATA_PATH}\" -ugc_directory \"${DST_USER_DATA_PATH}\"/ugc -cluster Cluster_IA -only_update_server_mods" "${DST_USER}"
 
     # remove any existing supervisor socket
     rm -f /var/run/supervisor.sock
