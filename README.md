@@ -68,6 +68,7 @@ After you finish this, re-run start server command, and the server should be run
 
  * On Docker environment which doesn't support UDP port forwarding, LAN only server cannot be used. (Still you can enable Steam punchthrough and search for your server in `Online` catalog. )
  * Docker IPv6 support is another sh\*t and we currently don't have any idea on it. Help and advices are always welcomed. (see [#7](https://github.com/Jamesits/docker-dst-server/issues/7).)
+ * When the server is started for some unknow reason it akes quite soem time for the Caves to sync its portals to the Master.  Normal wait time is about 1 to 1.5 hours.
 
 ## FAQ
 
