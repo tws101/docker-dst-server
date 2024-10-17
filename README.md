@@ -15,7 +15,7 @@ Please run the latest tag or any tag that does not say dev
 ### Prerequisites
 
  * Linux x86_64 and runs Docker (18.05.0-ce or later).
- * You may need a public IP to make your server accessible  from Internet. 
+ * You may need a public IP to make your server accessible from Internet. 
  * You need 4 UDP ports exposed to the public network. (See FAQ for details.)
  * CPU: 1 core is somewhat enough for a small-scale server (but don't try 60 ticks, start from 15 or 30).
  * Memory: We recommend reserving 1GiB Memory for the server, plus 60MiB per active user.
