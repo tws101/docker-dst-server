@@ -1,8 +1,7 @@
 # Don't Starve Together Dedicated Server Docker Image
 
-Forked from Jamesits
-
 Please read the whole document before putting your hands on your server. 
+Special thanks to Jamesits how repository I forked.
 
 ----------
 
@@ -39,7 +38,7 @@ Please use docker compose
 
 ### Stop server
 
-Just press `Ctrl+C` and wait a little while to let itself spin down. (If the server is saving data, don't press ^C twice to force kill the server.)
+A docker stop command, whether at the command line or in Dockge or Portainer will properly shut the server down.
 
 To programmatically shut down the server, send a SIGINT to the `supervisord` process. 
 
