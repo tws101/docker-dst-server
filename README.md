@@ -26,15 +26,14 @@ The Island Branch is DST with the Island of Adventure mods and dependencies inst
  * 5GiB available disk space is recommended.  Saves and config are small docker image is 4.3 Gigs.
  * CPU: 1 core per shard Recomended (can do higher tcik arte and player count).  1 core per 2 shards is possible (keep tick rate and player count low).
  * Memory: 2GiB Memory per shard recommended (can do higher tcik arte and player count).  2GiB Memory per shard is possible (keep tick rate and player count low).
+ * Path on Docker Host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
 ### Start server
-
-Please create a path on host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
 Please use docker compose to start the server.
 DST Standard
 [docker-compose](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
-Island of Adventure
+DST Island of Adventure
 [docker-compose](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
 
 ### Stop server
