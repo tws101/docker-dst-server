@@ -31,7 +31,7 @@ The Island Branch is DST with the Island of Adventure mods and dependencies inst
 
 Please create a path on host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
-Start server:
+Ports UDP 10999-11000 are needed forwarded to host to allow players to connect.  On islands these are 11001-11004 UDP.
 
 Please use docker compose
 [example config](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
