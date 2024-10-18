@@ -2,7 +2,7 @@ networks:
   dst-island:
     name: dst-island
 services:
-  dst-server:
+  dst-server-island:
      container_name: dst-server-island
      image: tws101/docker-dst-server:island-latest
      restart: "on-failure:5"
