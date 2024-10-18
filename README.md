@@ -21,20 +21,21 @@ The Island Branch is DST with the Island of Adventure mods and dependencies inst
 ### Prerequisites
 
  * Linux x86_64 and runs Docker (18.05.0-ce or later).
- * You may need a public IP to make your server accessible from Internet. 
- * You need 4 UDP ports exposed to the public network. (See FAQ for details.)
- * CPU: 1 core is somewhat enough for a small-scale server (but don't try 60 ticks, start from 15 or 30).
- * Memory: We recommend reserving 1GiB Memory for the server, plus 60MiB per active user.
- * Disk size: the Docker image takes 1.5GiB, and you need at least another 5MiB for maps, configs and logs. 4GiB available disk space is recommended.
+ * Head end router needs a public IP to make your server accessible from Internet. 
+ * Ports forwarded through head end router to docker host UDP 10999-11000. On islands these are 11001-11004 UDP.
+ * 5GiB available disk space is recommended.  Saves and config are small docker image is 4.3 Gigs.
+ * CPU: 1 core per shard Recomended (can do higher tcik arte and player count).  1 core per 2 shards is possible (keep tick rate and player count low).
+ * Memory: 2GiB Memory per shard recommended (can do higher tcik arte and player count).  2GiB Memory per shard is possible (keep tick rate and player count low).
 
 ### Start server
 
 Please create a path on host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
-Ports UDP 10999-11000 are needed forwarded to host to allow players to connect.  On islands these are 11001-11004 UDP.
-
-Please use docker compose
-[example config](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
+Please use docker compose to start the server.
+DST Standard
+[docker-compose](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
+Island of Adventure
+[docker-compose](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
 
 ### Stop server
 
