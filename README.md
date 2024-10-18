@@ -1,7 +1,7 @@
 # Don't Starve Together Dedicated Server Docker Image
 
 Please read the whole document before putting your hands on your server. 
-Special thanks to Jamesits how repository I forked.
+Special thanks to Jamesits who's repository I forked.
 
 ----------
 
