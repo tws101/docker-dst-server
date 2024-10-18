@@ -8,7 +8,14 @@ Please read the whole document before putting your hands on your server.
 
 ## Versioning
 
-Please run the latest tag or any tag that does not say dev
+The Master Branch is a standard DST server with the cave shard.  The "latest" tag is recommended but pinned versions of the previous release tags are offered.
+[example config](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
+
+The Island Branch is DST with the Island of Adventure mods and dependencies installed this is a 4 shard server.  Tag "island-latest"
+[example config](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
+
+
+* You may see versions with dev tags these are not recomended.
 
 ## Running
 
