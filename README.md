@@ -24,8 +24,8 @@ The Island Branch is DST with the Island of Adventure mods and dependencies inst
  * Head end router needs a public IP to make your server accessible from Internet. 
  * Ports forwarded through head end router to docker host UDP 10999-11000. On islands these are 11001-11004 UDP.
  * 5GiB available disk space is recommended.  Saves and config are small docker image is 4.3 Gigs.
- * CPU: 1 core per shard Recomended (can do higher tcik arte and player count).  1 core per 2 shards is possible (keep tick rate and player count low).
- * Memory: 2GiB Memory per shard recommended (can do higher tcik arte and player count).  2GiB Memory per shard is possible (keep tick rate and player count low).
+ * CPU: 1 core per shard Recomended (can do higher tick rate and player count).  1 core per 2 shards is possible (keep tick rate and player count low).
+ * Memory: 2GiB Memory per shard recommended (can do higher tick rate and player count).  1GiB Memory per shard is possible (keep tick rate and player count low).
  * Path on Docker Host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
 ### Start server
@@ -46,7 +46,7 @@ Note: the server may take up to ~5min to save map and fully shut down.
  
 ## Server Configuration
 
-If you don't already have a set of server config in your data directory, we will generate one for you. Start server once using the command above, and you will see:
+If you don't already have a set server config in your data directory, we will generate one for you. Start server once using the command above, and you will see:
 ```
 Creating default server config...
 Please fill in `DoNotStarveTogether/Cluster_1/cluster_token.txt` with your cluster token and restart server!
@@ -67,12 +67,6 @@ If you need to add mods, change world generation config, etc., please do it now.
 
 After you finish this, re-run start server command, and the server should be running.
 
-## Known Issues
-
- * On Docker environment which doesn't support UDP port forwarding, LAN only server cannot be used. (Still you can enable Steam punchthrough and search for your server in `Online` catalog. )
- * Docker IPv6 support is another sh\*t and we currently don't have any idea on it. Help and advices are always welcomed. (see [#7](https://github.com/Jamesits/docker-dst-server/issues/7).)
- * When the server is started for some unknow reason it akes quite soem time for the Caves to sync its portals to the Master.  Normal wait time is about 1 to 1.5 hours.
-
 ## FAQ
 
 #### How to update server or mods?
@@ -89,7 +83,7 @@ You can try the 3rd party website [Don't Starve Together Server List](https://ds
 
 #### What port does this server require?
 
-You need to expose UDP 10999 (master) and 11000 (caves) for client to connect; udp 12346 and 12347 for steam connection. Don't NAT these ports to different port numbers.
+You need to expose UDP 10999 (master) and 11000 (caves) for client to connect; udp 12346 and 12347 for steam connection. Don't NAT these ports to different port numbers.  Please see Island compose for its seperate port numbers.
 
 The server use another 2 high UDP ports for unknown communication, and UDP 10998 (listen on localhost) for communication between cluster servers.
 
