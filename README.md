@@ -29,7 +29,7 @@ The Island Branch is DST with the Island of Adventure mods and dependencies inst
 
 ### Start server
 
-Let's assume you are saving your server config and status to `${HOME}/.klei/DoNotStarveTogether`. (This is the default location when it is running outside Docker, so we'll use this as an example. If you want to save it to other location, just mount that directory read-write to the /data folder of the container.)
+Please create a path on host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
 
 Start server:
 
