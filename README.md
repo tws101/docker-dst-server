@@ -10,6 +10,9 @@ Special thanks to Jamesits who's repository I forked.
 The Master Branch is a standard DST server with the cave shard.  The "latest" tag is recommended but pinned versions of the previous release tags are offered.
 [docker-compose](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
 
+The Slim Branch is for users that want the image without DST installed lowering the image size from 2.7gigs down to less than 70megs.  On container run DST will be downloaded and installed from scratch.
+[docker-compose](https://github.com/tws101/docker-dst-server/blob/slim/docker-compose.yml)
+
 The Island Branch is DST with the Island of Adventure mods and dependencies installed this is a 4 shard server.  Tag "island-latest"
 [docker-compose](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
 
