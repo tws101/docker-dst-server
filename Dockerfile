@@ -47,7 +47,7 @@ COPY scripts_system /usr/local/bin/
 COPY scripts_steam /opt/steamcmd_scripts/
 RUN chmod +x /usr/local/bin/*
 
-# install Don't Starve Together server
+# Prepare Don't Starve Together server directory but do not install
 RUN mkdir -p /opt/dst_server \
     && chown -R "${DST_USER}:${DST_GROUP}" /opt/dst_server \
     && rm -rf /root/Steam /root/.steam
