@@ -4,7 +4,7 @@ networks:
 services:
   dst-server:
      container_name: dst-server
-     image: tws101/docker-dst-server:latest
+     image: tws101/docker-dst-server:slim-latest
      restart: "on-failure:5"
      networks:
       - dst
