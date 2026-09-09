@@ -44,10 +44,7 @@ Please fill in DoNotStarveTogether/Cluster_1/cluster_token.txt with your cluster
 
 ### Cluster token
 
-1. Launch an official DST client and log in.
-2. **Play** → main menu → **Account** (bottom left).
-3. In the browser: **Games** → **Don't Starve Together Servers**.
-4. Under **Add New Server**, enter any name and copy the token.
+Login to your Klei Account then to go [Klei DST Cluster Token Creator](https://accounts.klei.com/account/game/servers?game=DontStarveTogether)
 
 The token looks like `pds-g^…-q^…=`.
 
