@@ -9,8 +9,8 @@ Three image variants. Use Docker Compose; do not start from a raw `docker run` u
 | Branch / tag | What you get | Compose |
 |---|---|---|
 | `master` / `latest` | Standard DST with cave shard. Prefer `latest`; older release tags are pinned. | [docker-compose.yml (master)](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml) |
-| `slim` | Image only (~70 MB). DST is downloaded on first container start (full image is ~2.7 GB). | [docker-compose.yml (slim)](https://github.com/tws101/docker-dst-server/blob/slim/docker-compose.yml) |
-| `develop-island` / `island-latest` | Island of Adventure mods and dependencies. Four shards. | [docker-compose.yml (island)](https://github.com/tws101/docker-dst-server/blob/island/docker-compose.yml) |
+| `slim` / `slim-latest` | Image only (~70 MB). DST is downloaded on first container start (full image is ~2.7 GB). | [docker-compose.yml (slim)](https://github.com/tws101/docker-dst-server/blob/slim/docker-compose.yml) |
+| `island` / `island-latest` | Island of Adventure mods and dependencies. Four shards. | [docker-compose.yml (island)](https://github.com/tws101/docker-dst-server/blob/island/docker-compose.yml) |
 
 Tags containing `dev` are not supported.
 
