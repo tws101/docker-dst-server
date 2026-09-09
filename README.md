@@ -1,96 +1,85 @@
-# Don't Starve Together Dedicated Server Docker Image
+# Don't Starve Together dedicated server (Docker)
 
-Please read the whole document before putting your hands on your server. 
-Special thanks to Jamesits who's repository I forked.
+Fork of [Jamesits/docker-dst-server](https://github.com/Jamesits/docker-dst-server).
 
-----------
+Three image variants. Use Docker Compose; do not start from a raw `docker run` unless you already know the env vars.
 
-## Versioning
+## Variants
 
-The Master Branch is a standard DST server with the cave shard.  The "latest" tag is recommended but pinned versions of the previous release tags are offered.
-[docker-compose](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
+| Branch / tag | What you get | Compose |
+|---|---|---|
+| `master` / `latest` | Standard DST with cave shard. Prefer `latest`; older release tags are pinned. | [docker-compose.yml (master)](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml) |
+| `slim` / `slim-latest` | Image only (~70 MB). DST is downloaded on first container start (full image is ~2.7 GB). | [docker-compose.yml (slim)](https://github.com/tws101/docker-dst-server/blob/slim/docker-compose.yml) |
+| `island` / `island-latest` | Island of Adventure mods and dependencies. Four shards. | [docker-compose.yml (island)](https://github.com/tws101/docker-dst-server/blob/island/docker-compose.yml) |
 
-The Slim Branch is for users that want the image without DST installed lowering the image size from 2.7gigs down to less than 70megs.  On container run DST will be downloaded and installed from scratch.
-[docker-compose](https://github.com/tws101/docker-dst-server/blob/slim/docker-compose.yml)
+Tags containing `dev` are not supported.
 
-The Island Branch is DST with the Island of Adventure mods and dependencies installed this is a 4 shard server.  Tag "island-latest"
-[docker-compose](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
+## Requirements
 
+- Linux x86_64 with Docker 18.05 or later (Compose recommended).
+- Public IPv4 on the edge router if the server should be reachable from the internet.
+- Port forwards, **UDP only**, 1:1 (do not remap):
+  - Standard / slim: `10999–11000`
+  - Island: `11001–11004`
+  - Also needed: `12346–12347/udp` (Steam)
+- Disk: ~5 GiB free. Save data is small; the baked image is on the order of 3–4 GiB.
+- CPU: 1 core per shard recommended; 1 core per 2 shards is possible at low tick rate and player count.
+- RAM: 2 GiB per shard recommended; 1 GiB per shard is possible at low tick rate and player count.
+- A host directory for config/saves. The container runs as UID/GID **1000**; chown that path accordingly.
 
-* You may see versions with dev tags these are not recomended.
+## Start and stop
 
-## Running
+Start with the compose file for your variant (links above).
 
-### Prerequisites
+Stop with `docker compose stop` / `docker stop`, or SIGINT to `supervisord`. The process can take up to about five minutes to save and exit. Tools such as Dockge or Portainer issue a normal Docker stop and are fine.
 
- * Linux x86_64 and runs Docker (18.05.0-ce or later).
- * Head end router needs a public IP to make your server accessible from Internet. 
- * Ports forwarded through head end router to docker host UDP 10999-11000. On islands these are 11001-11004 UDP.
- * 5GiB available disk space is recommended.  Saves and config are small docker image is 4.3 Gigs.
- * CPU: 1 core per shard Recomended (can do higher tick rate and player count).  1 core per 2 shards is possible (keep tick rate and player count low).
- * Memory: 2GiB Memory per shard recommended (can do higher tick rate and player count).  1GiB Memory per shard is possible (keep tick rate and player count low).
- * Path on Docker Host to hold the server config.  User and Group ID 1000 is how the container will access the path so set your permssion on it accordingly.
+## First-run configuration
 
-### Start server
-
-Please use docker compose to start the server.
-DST Standard
-[docker-compose](https://github.com/tws101/docker-dst-server/blob/master/docker-compose.yml)
-DST Island of Adventure
-[docker-compose](https://github.com/tws101/docker-dst-server/blob/develop-island/docker-compose.yml)
-
-### Stop server
-
-A docker stop command, whether at the command line or in Dockge or Portainer will properly shut the server down.
-
-To programmatically shut down the server, send a SIGINT to the `supervisord` process. 
-
-Note: the server may take up to ~5min to save map and fully shut down.
- 
-## Server Configuration
-
-If you don't already have a set server config in your data directory, we will generate one for you. Start server once using the command above, and you will see:
+If the data directory has no cluster config, the container writes defaults and then exits with:
 ```
 Creating default server config...
-Please fill in `DoNotStarveTogether/Cluster_1/cluster_token.txt` with your cluster token and restart server!
+Please fill in DoNotStarveTogether/Cluster_1/cluster_token.txt with your cluster token and restart server!
 ```
 
-To generate a cluster token (as of 2019-11-02):
 
-1. Open a genuine copy of Don't Starve Together client and log in
-2. Click "Play" to go to the main menu
-3. click "account" button on the bottom left of the main menu
-4. In the popup browser, click "GAMES" on the top nav bar
-5. Click "Don't Starve Toegther Servers" button on the top right
-6. Scroll down to "ADD NEW SERVER" section, fill in a server name (it is not important), and copy the generated token
+### Cluster token
 
-The token looks like `pds-g^aaaaaaaaa-q^jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=`. Then either set `DST_CLUSTER_TOKEN` environment variable during `docker run`, or paste the token into `your_data_directory/DoNotStarveTogether/Cluster_1/cluster_token.txt`.
+1. Launch an official DST client and log in.
+2. **Play** → main menu → **Account** (bottom left).
+3. In the browser: **Games** → **Don't Starve Together Servers**.
+4. Under **Add New Server**, enter any name and copy the token.
 
-If you need to add mods, change world generation config, etc., please do it now. Don't forget to edit `your_data_directory/DoNotStarveTogether/Cluster_1/cluster.ini` and get your server an unique name!
+The token looks like `pds-g^…-q^…=`.
 
-After you finish this, re-run start server command, and the server should be running.
+Either:
+
+- set `DST_CLUSTER_TOKEN` in Compose, or
+- write the token to `your_data_directory/DoNotStarveTogether/Cluster_1/cluster_token.txt`.
+
+Then edit `cluster.ini` (unique server name), add mods / worldgen if needed, and start the container again.
 
 ## FAQ
 
-#### How to update server or mods?
+**Update the game or mods?**
 
-Restart the server. Updates will be downloaded automatically.
+Restart the container. Updates download on start.
 
-#### How to connect to a LAN only server?
+**Connect to a LAN-only server?**
 
-Run `c_connect("IP address", port)` or `c_connect("IP address", port, "password")` in client console.
+Client console: `c_connect("IP", port)` or `c_connect("IP", port, "password")`.
 
-#### How to check if the server is online?
+**Is the server listed?**
 
-You can try the 3rd party website [Don't Starve Together Server List](https://dstserverlist.appspot.com).
+Third-party list: [dstserverlist.appspot.com](https://dstserverlist.appspot.com).
 
-#### What port does this server require?
+**Which ports?**
 
-You need to expose UDP 10999 (master) and 11000 (caves) for client to connect; udp 12346 and 12347 for steam connection. Don't NAT these ports to different port numbers.  Please see Island compose for its seperate port numbers.
+Clients use UDP 10999 (master) and 11000 (caves) on the standard image; Island uses 11001–11004. Steam uses UDP 12346–12347. Do not NAT those to different numbers.
 
-The server use another 2 high UDP ports for unknown communication, and UDP 10998 (listen on localhost) for communication between cluster servers.
+Two additional high UDP ports are used internally. UDP 10998 is bound on localhost for shard-to-shard traffic and must not be published.
 
-Here is a `netstat -tulpn` output on our test server:
+Example `netstat -tulpn`:
+
 ```
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
 udp        0      0 0.0.0.0:12346           0.0.0.0:*                           54/./dontstarve_ded 
@@ -134,19 +123,12 @@ The server will create a cave for you. If you don't want the cave, you have to m
 Open `Cluster_X/Master/modoverrides.lua` and you will see something like `workshop-XXXXX` where `XXXXX` is a number.\
 Open `Cluster_1/mods/dedicated_server_mods_setup.lua` on server and write `ServerModSetup("XXXXX")`.
  
-## Thanks
+## Credits
 
- * [James Swineson](https://swineson.me)
- * [Mingye Wang](https://github.com/Arthur2e5)
- * [@MephistoMMM](https://github.com/MephistoMMM)
- * [@m13253](https://github.com/m13253)
- * [@wph95](https://github.com/wph95)
- * [DaoCloud](https://daocloud.io)
- * [CodeVS](http://codevs.cn/)
- * [I Choose Death Too](https://steamcommunity.com/id/ichoosedeathtoo/)
+James Swineson, Mingye Wang ([Arthur2e5](https://github.com/Arthur2e5)), [MephistoMMM](https://github.com/MephistoMMM), [m13253](https://github.com/m13253), [wph95](https://github.com/wph95), DaoCloud, CodeVS, [I Choose Death Too](https://steamcommunity.com/id/ichoosedeathtoo/).
 
 ## References
 
- * [How to setup dedicated server with cave on Linux](https://steamcommunity.com/sharedfiles/filedetails/?id=590565473)
- * [How to install,configure and update mods on Dedicated Server](https://steamcommunity.com/sharedfiles/filedetails/?id=591543858)
- * [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)
+- [Dedicated server with caves on Linux](https://steamcommunity.com/sharedfiles/filedetails/?id=590565473)
+- [Mods on a dedicated server](https://steamcommunity.com/sharedfiles/filedetails/?id=591543858)
+- [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)
