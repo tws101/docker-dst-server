@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=debian:buster-slim
+ARG BASE_IMAGE=debian:bookworm-slim
 FROM $BASE_IMAGE
 LABEL maintainer="Tyler Shield <tylershield@gmail.com>"
 
