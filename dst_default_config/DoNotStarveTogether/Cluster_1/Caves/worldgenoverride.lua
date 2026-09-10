@@ -80,6 +80,9 @@ KLEI     1 return {
 		year_of_the_beefalo="default",			-- Year of the Beefalo: 		"default", "enabled"
 		year_of_the_catcoon="default",			-- Year of the Catcoon: 		"default", "enabled"
 		year_of_the_bunnyman="default",			-- Year of the Bunnyman: 		"default", "enabled"
+		year_of_the_dragonfly="default",        -- Year of the Dragonfly: 		"default", "enabled"
+		year_of_the_knight="default",           -- Year of the Knight: 		    "default", "enabled"
+		year_of_the_snake="default",            -- Year of the Snake: 		    "default", "enabled"
 	
 		-- SURVIVORS***
 		extrastartingitems="default",			-- Extra Starting Resources: 	"0", "5", "default", "15", "20", "none"
