@@ -51,5 +51,93 @@ KLEI     1 return {
 		spiders_setting="default",				-- Spider Dens:					"never", "rare", "uncommon", "default", "often", "mostly", "always", "insane"
 		cave_spiders="default", 				-- Spilagmites: 				"never", "rare", "uncommon", "default", "often", "mostly", "always", "insane"
 		tentacles="default",					-- Tentacles: 					"never", "rare", "uncommon", "default", "often", "mostly", "always", "insane"
+
+		---------------------------WORLD SETTINGS (CAN BE CHANGED POST WORLDGEN AND AFFECT WORLD)---------------------------
+	-- *** IS REPEATED IN CASE YOU ARE HOSTING CAVES ONLY + SOME SETTINGS NEED TO BE SET FOR BOTH SHARDS, OR CAN BE DIFFERENT BETWEEN MASTER AND CAVES
+		-- GLOBAL***
+		specialevent= "default",				-- Events: 						"none", "default"
+		autumn="default",						-- Autumn: 						"noseason", "veryshortseason", "shortseason", "default", "longseason", "verylongseason", "random"
+		winter="default",						-- Winter: 						"noseason", "veryshortseason", "shortseason", "default", "longseason", "verylongseason", "random"
+		spring="default",						-- Spring: 						"noseason", "veryshortseason", "shortseason", "default", "longseason", "verylongseason", "random"
+		summer="default",						-- Summer: 						"noseason", "veryshortseason", "shortseason", "default", "longseason", "verylongseason", "random"
+		day="default",							-- Day Type: 					"default", "longday", "longdusk", "longnight", "noday", "nodusk", "nonight", "onlyday", "onlydusk", "onlynight"
+		spawnmode="fixed",						-- Spawn Mode: 					"fixed","scatter"
+		ghostenabled="always",					-- Survivor Death: 				"always","none"
+		portalresurection="none",				-- Revive at Florid Postern:	"always","none"
+		ghostsanitydrain="always",				-- Ghost Sanity Drain:			"always","none"
+		resettime="default",					-- Death Reset Timer:			"none","slow","default","fast","always"
+		beefaloheat="default",					-- Beefalo Mating Frequency:	"never", "rare", "default", "often", "always"
+		krampus="default",						-- Krampii: 					"never", "rare", "default", "often", "always"
+	
+		-- EVENTS***
+		crow_carnival="default",				-- Midsummer Cawnival: 			"default", "enabled"
+		hallowed_nights="default",				-- Hallowed Nights:				"default", "enabled"
+		winters_feast="default",				-- Winter's Feast:				"default", "enabled"
+		year_of_the_gobbler="default",			-- Year of the Gobbler:			"default", "enabled"
+		year_of_the_varg="default", 			-- Year of the Varg: 			"default", "enabled"
+		year_of_the_pig="default",				-- Year of the Pig King: 		"default", "enabled"
+		year_of_the_carrat="default",			-- Year of the Carrat: 			"default", "enabled"
+		year_of_the_beefalo="default",			-- Year of the Beefalo: 		"default", "enabled"
+		year_of_the_catcoon="default",			-- Year of the Catcoon: 		"default", "enabled"
+		year_of_the_bunnyman="default",			-- Year of the Bunnyman: 		"default", "enabled"
+	
+		-- SURVIVORS***
+		extrastartingitems="default",			-- Extra Starting Resources: 	"0", "5", "default", "15", "20", "none"
+		seasonalstartingitems="default",		-- Seasonal Starting Items: 	"none", "default",
+		spawnprotection="default",				-- Griefer Spawn Protection:	"none", "default", "always"
+		dropeverythingondespawn="default",		-- Drop Items on Disconnect: 	"default", "always",
+		healthpenalty="always",					-- Max Health Penalty:			"always","none"
+		lessdamagetaken="none",					-- Damage Taken: 				"always","none","more"
+		temperaturedamage="default",			-- Temperature Damage:			"default","nonlethal"
+		hunger="default",						-- Hunger Damage: 				"default","nonlethal"
+		darkness="default",						-- Darkness Damage: 			"default","nonlethal"
+		shadowcreatures="default",				-- Sanity Monsters: 			"never", "rare", "default", "often", "always"
+		brightmarecreatures="default",			-- Enlightenment Monsters: 		"never", "rare", "default", "often", "always"
+	
+		-- WORLD
+		atriumgate="default",					-- Ancient Gateway: 			"veryslow", "slow", "default", "fast", "veryfast"
+		wormattacks="default",					-- Cave Worm Attacks:			"never", "rare", "default", "often", "always"
+		earthquakes="default", 					-- Earthquakes:					"never", "rare", "default", "often", "always"
+		weather="default",						-- Rain: 						"never", "rare", "default", "often", "always"
+		rifts_frequency_cave="default",			-- Wild Rift Frequency: 		"never", "rare", "default", "often", "always"
+		rifts_enabled_cave="default",			-- Wild Rifts Enabled:			"default", "always", "never"
+	
+		-- RESOURCE REGROWTH
+		regrowth="default",						-- Regrowth Multiplier: 		"never", "veryslow", "slow", "default", "fast", "veryfast"
+		flower_cave_regrowth="default",			-- Light Flower:				"never", "veryslow", "slow", "default", "fast", "veryfast"
+		lightflier_flower_regrowth="default",	-- Lightbug Flower:				"never", "veryslow", "slow", "default", "fast", "veryfast"
+		mushtree_moon_regrowth="default",		-- Lunar Mushtrees:				"never", "veryslow", "slow", "default", "fast", "veryfast"
+		mushtree_regrowth="default",			-- Mushroom Trees:				"never", "veryslow", "slow", "default", "fast", "veryfast"
+	
+		-- CREATURES (SPAWN RATES)
+		lightfliers="default",					-- Bulbous Lightbugs: 			"never", "rare", "default", "often", "always"
+		bunnymen="default", 					-- Bunnymen: 					"never", "rare", "default", "often", "always"
+		dustmoths="default",					-- Dust Moths:					"never", "rare", "default", "often", "always"
+		grassgekkos="default",					-- Grass Gekko Morphing: 		"never", "rare", "default", "often", "always"
+		moles_setting="default",				-- Moles:						"never", "rare", "default", "often", "always"
+		mushgnome="default",					-- Mush Gnomes:					"never", "rare", "default", "often", "always"
+		pigs_setting="default",					-- Pigs:						"never", "rare", "default", "often", "always"	
+		rocky="default", 						-- Rock Lobsters: 				"never", "rare", "default", "often", "always"
+		slurtles="default", 					-- Slurtles:					"never", "rare", "default", "often", "always"
+		snurtles="default",						-- Snurtles:					"never", "rare", "default", "often", "always"
+		monkey="default", 						-- Splumonkeys:					"never", "rare", "default", "often", "always"
+		
+		-- HOSTILE CREATURES (SPAWN RATES)
+		bats_setting="default",					-- Bats:						"never", "rare", "default", "often", "always"
+		spider_hider="default",					-- Cave Spiders:				"never", "rare", "default", "often", "always"
+		spider_dropper="default",				-- Dangling Depth Dwellers:		"never", "rare", "default", "often", "always"
+		merms="default",						-- Merms:						"never", "rare", "default", "often", "always"
+		molebats="default",						-- Naked Mole Bats:				"never", "rare", "default", "often", "always"
+		nightmarecreatures="default",			-- Ruins Nightmares:			"never", "rare", "default", "often", "always"
+		spider_warriors="default",				-- Spider Warriors:				"never", "default"
+		spiders="default",						-- Spiders:						"never", "rare", "default", "often", "always"
+		spider_spitter="default",				-- Spitter Spiders: 			"never", "rare", "default", "often", "always"
+	
+		-- GIANTS (SPAWN RATES)
+		fruitfly="default",						-- Lord of the Fruit Flies: 	"never", "rare", "default", "often", "always"
+		daywalker="default",					-- Nightmare Werepig: 			"never", "rare", "default", "often", "always"
+		spiderqueen="default",					-- Spider Queen:				"never", "rare", "default", "often", "always"
+		toadstool="default",					-- Toadstool:					"never", "rare", "default", "often", "always"
+		liefs="default",						-- Treeguards:					"never", "rare", "default", "often", "always"
 	},
 }
